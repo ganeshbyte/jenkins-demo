@@ -1,4 +1,4 @@
-pipeline {
+=pipeline {
     agent any
     stages {
         // ... your existing build and test stages ...
@@ -6,9 +6,11 @@ pipeline {
         stage('Send Email') {
             steps {
                 script {
-                    reportFiles = glob('*.html') // Adjust the pattern to match your report file extensions
+                    // Use 'findFiles' to get the list of report files
+                    def reportFiles = findFiles(glob: '*.html').collect { it.path }
+                    env.REPORT_FILES = reportFiles.join(",")
                 }
-                mail body: '''
+                emailext body: '''
                     Hi Team,
 
                     Jenkins Build ${BUILD_NUMBER} has ${BUILD_STATUS}.
@@ -20,9 +22,9 @@ pipeline {
                     Thanks,
                     Jenkins
                 ''',
-                subject: 'Jenkins Build ${BUILD_NUMBER} ${BUILD_STATUS}',
+                subject: "Jenkins Build ${BUILD_NUMBER} ${BUILD_STATUS}",
                 to: 'chaudhariganeshofficial@gmail.com, ganeshchaudhari.dev@gmail.com',
-                attachments: reportFiles
+                attachmentsPattern: '${REPORT_FILES}'
             }
         }
     }
