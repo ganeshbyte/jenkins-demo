@@ -15,7 +15,6 @@ pipeline {
                         Jenkins
                     ''',
                     to: 'chaudhariganeshofficial@gmail.com, ganeshchaudhari.dev@gmail.com',
-                    attachmentsPattern: 'index.html'
                 
             }
         }
