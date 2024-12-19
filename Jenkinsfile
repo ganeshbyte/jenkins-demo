@@ -14,7 +14,8 @@ pipeline {
                     Jenkins
                 ''',
                 subject: 'Jenkins Build ${BUILD_NUMBER} ${BUILD_STATUS}',
-                to: 'chaudhariganeshofficial@gmail.com, ganeshchaudhari.dev@gmail.com'
+                to: 'chaudhariganeshofficial@gmail.com, ganeshchaudhari.dev@gmail.com',
+                attach:'index.html'
             }
         }
     }
