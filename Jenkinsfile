@@ -3,9 +3,8 @@ pipeline {
     stages {
         stage('Send Email') {
             steps {
-                emailext(
-                    subject: 'Jenkins Build ${BUILD_NUMBER} ${BUILD_STATUS}',
-                    body: '''
+              
+                mail body: '''
                         Hi Team,
 
                         Jenkins Build ${BUILD_NUMBER} has ${BUILD_STATUS}.
@@ -17,7 +16,7 @@ pipeline {
                     ''',
                     to: 'chaudhariganeshofficial@gmail.com, ganeshchaudhari.dev@gmail.com',
                     attachmentsPattern: 'index.html'
-                )
+                
             }
         }
     }
