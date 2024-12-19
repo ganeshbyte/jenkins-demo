@@ -45,7 +45,7 @@ pipeline {
                     emailext(
                         subject: "Jenkins Pipeline Execution Complete - HTML Report",
                         body: "The Jenkins pipeline has finished executing. Please find the HTML report attached.",
-                        to: 'chaudhariganeshofficial@gmail.com',  // Use your provided email address here
+                        to: 'ganeshchaudhari.dev@gmail.com',  // Use your provided email address here
                         attachmentsPattern: 'index.html'  // Attach the HTML report
                     )
                 } else {
