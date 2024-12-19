@@ -1,29 +1,39 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checking out code (not needed in this case)'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Running build steps (or any other steps you need)'
+                script {
+                    // Build steps here
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    // Test steps here
+                }
             }
         }
     }
-
     post {
         always {
-            echo 'Pipeline execution complete.'
-
-            // Send an email notification
             emailext(
-                subject: "Jenkins Pipeline Execution Complete",
-                body: "The Jenkins pipeline has finished executing successfully.",
-                to: 'chaudhariganeshofficial@gmail.com'  // Replace with your email address
+                subject: 'Build ${BUILD_STATUS} - ${JOB_NAME}',
+                body: '''
+                    <html>
+                        <body>
+                            <h1>Build ${BUILD_STATUS}</h1>
+                            <p>Build URL: <a href="${BUILD_URL}">${BUILD_URL}</a></p>
+                            <p>Changes since last success:</p>
+                            <ul>
+                                ${CHANGES_SINCE_LAST_SUCCESS.collect { "<li>${it}</li>" }.join('\n')}
+                            </ul>
+                        </body>
+                    </html>
+                ''',
+                recipientList: 'chaudhariganeshofficial@gmail.com',
+                mimeType: 'html'
             )
         }
     }
