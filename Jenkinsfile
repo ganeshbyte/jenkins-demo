@@ -10,7 +10,7 @@ pipeline {
                 //     def reportFiles = findFiles(glob: '*.html').collect { it.path }
                 //     env.REPORT_FILES = reportFiles.join(",")
                 // }
-                emailext body: '''
+                mail body: '''
                     Hi Team,
 
                     Attached are the build reports.
