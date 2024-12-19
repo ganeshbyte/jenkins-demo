@@ -26,6 +26,14 @@ pipeline {
     post {
         always {
             echo 'Pipeline execution complete.'
+
+            // Send email with the report attached
+            emailext(
+                subject: "Jenkins Pipeline Execution Complete - HTML Report",
+                body: "The Jenkins pipeline has finished executing. Please find the HTML report attached.",
+                to: 'chaudhariganeshofficial@gmail.com',  // Replace with your Gmail address
+                attachmentsPattern: 'index.html'  // Attach the HTML report generated in the workspace
+            )
         }
     }
 }
