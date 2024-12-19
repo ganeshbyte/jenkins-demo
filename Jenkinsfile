@@ -1,4 +1,4 @@
-=pipeline {
+pipeline {
     agent any
     stages {
         // ... your existing build and test stages ...
