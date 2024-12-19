@@ -1,27 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-                script {
-                    // Build your project here
-                }
-            }
-        }
-        stage('Test') {
-            steps {
-                script {
-                    // Test your project here
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script {
-                    // Deploy your project here
-                }
-            }
-        }
         stage('Send Email') {
             steps {
                 mail body: '''
