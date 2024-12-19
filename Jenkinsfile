@@ -5,11 +5,11 @@ pipeline {
 
         stage('Send Email') {
             steps {
-                script {
-                    // Use 'findFiles' to get the list of report files
-                    def reportFiles = findFiles(glob: '*.html').collect { it.path }
-                    env.REPORT_FILES = reportFiles.join(",")
-                }
+                // script {
+                //     // Use 'findFiles' to get the list of report files
+                //     def reportFiles = findFiles(glob: '*.html').collect { it.path }
+                //     env.REPORT_FILES = reportFiles.join(",")
+                // }
                 emailext body: '''
                     Hi Team,
 
