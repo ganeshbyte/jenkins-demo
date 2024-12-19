@@ -20,7 +20,7 @@ pipeline {
                 ''',
                 subject: "Jenkins Build",
                 to: 'chaudhariganeshofficial@gmail.com, ganeshchaudhari.dev@gmail.com',
-                attachmentsPattern: '${REPORT_FILES}'
+                // attachmentsPattern: '${REPORT_FILES}'
             }
         }
     }
