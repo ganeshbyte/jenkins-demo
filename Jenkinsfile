@@ -5,9 +5,7 @@ pipeline {
 
         stage('Send Email') {
             steps {
-                 emailext (body: 'Test Message',
-                    subject: 'Test Subject',
-                    to: 'ganeshchaudhari.dev@gmail.com')
+                 emailext attachLog: true, attachmentsPattern: 'text', body: 'Bhai Ho Jao Please', subject: 'Bhai Ho Jao Please', to: 'chaudhariganeshofficial@gmail.com'
                     
             }
         }
