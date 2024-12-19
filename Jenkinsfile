@@ -5,10 +5,7 @@ pipeline {
 
         stage('Send Email') {
             steps {
-                // script {
-                //     // Assuming your reports are in the root directory
-                //     reportFiles = glob('*.html') // Adjust the pattern to match your report file extensions
-                // }
+                
                 mail body: '''
                     Hi Team,
 
@@ -22,8 +19,7 @@ pipeline {
                     Jenkins
                 ''',
                 subject: 'Jenkins Build ${BUILD_NUMBER} ${BUILD_STATUS}',
-                to: 'chaudhariganeshofficial@gmail.com, ganeshchaudhari.dev@gmail.com',
-                // attachments: reportFiles
+                to: 'chaudhariganeshofficial@gmail.com, ganeshchaudhari.dev@gmail.com'
             }
         }
     }
