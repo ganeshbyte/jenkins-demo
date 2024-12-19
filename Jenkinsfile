@@ -11,12 +11,10 @@ pipeline {
         stage('Generate HTML Report') {
             steps {
                 script {
-                    // Let's make sure index.html is being created
+                    // Simulate generating the index.html file
                     echo 'Generating HTML report...'
-                    // Simulating HTML report generation (if not using an actual process)
                     writeFile file: 'index.html', text: '<html><body><h1>Sample Report</h1></body></html>'
-                    
-                    // Alternatively, ensure that your actual HTML report generation command is in place here
+                    // Replace this with your actual HTML report generation logic
                 }
             }
         }
@@ -37,18 +35,17 @@ pipeline {
         always {
             echo 'Pipeline execution complete.'
 
-            // Ensure the file exists before attempting to send the email
+            // Check if the report exists before sending the email
             script {
-                // Check if the report exists in the workspace
                 def reportExists = fileExists 'index.html'
                 if (reportExists) {
                     echo 'HTML report found. Sending email with attachment...'
 
-                    // Send email with the HTML report attached
+                    // Send email with the generated HTML report attached
                     emailext(
                         subject: "Jenkins Pipeline Execution Complete - HTML Report",
                         body: "The Jenkins pipeline has finished executing. Please find the HTML report attached.",
-                        to: 'chaudhariganeshofficial@gmail.com',  // Replace with your Gmail address
+                        to: 'chaudhariganeshofficial@gmail.com',  // Use your provided email address here
                         attachmentsPattern: 'index.html'  // Attach the HTML report
                     )
                 } else {
