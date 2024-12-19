@@ -5,7 +5,6 @@ pipeline {
 
         stage('Send Email') {
             steps {
-
                  emailext (
                     body: 'Test Message',
                     subject: 'Test Subject',
