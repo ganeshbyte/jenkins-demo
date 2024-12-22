@@ -6,8 +6,8 @@ pipeline {
                 emailext (
                     // attachLog: true,
                     attachmentsPattern: 'index.html',
-                    // body: 'Bhai Ho Jao Please',
-                    // subject: 'Bhai Ho Jao Please',
+                    body: 'Bhai Ho Jao Please',
+                    subject: 'Bhai Ho Jao Please',
                     to: 'chaudhariganeshofficial@gmail.com'
                 )
             }
